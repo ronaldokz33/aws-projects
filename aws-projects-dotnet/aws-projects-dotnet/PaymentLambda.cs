@@ -6,7 +6,7 @@ namespace aws_projects_dotnet
 {
     internal class PaymentLambda
     {
-        public APIGatewayProxyResponse FunctionHandler(APIGatewayProxyRequest request)
+        public APIGatewayProxyResponse Handler(APIGatewayProxyRequest request)
         {
             var id = request.PathParameters["id"];
 
