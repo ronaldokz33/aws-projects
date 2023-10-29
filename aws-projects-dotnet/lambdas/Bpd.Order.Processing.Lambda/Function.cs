@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using System.Net;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
-namespace bpd_order_processing_lambda
+namespace Bpd.Order.Processing.Lambda
 {
     public sealed class Function
     {
