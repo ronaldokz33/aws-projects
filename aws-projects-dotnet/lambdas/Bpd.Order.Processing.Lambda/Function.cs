@@ -18,7 +18,8 @@ namespace Bpd.Order.Processing.Lambda
                 Body = JsonConvert.SerializeObject(new
                 {
                     Ronaldo = "Hello World",
-                    Id = id
+                    Id = id,
+                    Project = "Bpd.Order.Processing.Lambda"
                 })
             };
         }
