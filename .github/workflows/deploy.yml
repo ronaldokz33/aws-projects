@@ -28,13 +28,15 @@ jobs:
         - name: AWS CLI
           run: dotnet tool install -g Amazon.Lambda.Tools
         - name: Install dependencies
-          run: dotnet restore ./aws-projects-dotnet/lambdas/bpd-lambdas.sln
+          run: dotnet restore ./aws-projects-dotnet/lambdas/AspNetOnLambda/src/AspNetOnLambda
         - name: Build
-          run: dotnet build --no-restore ./aws-projects-dotnet/lambdas/bpd-lambdas.sln
+          run: dotnet build --no-restore ./aws-projects-dotnet/lambdas/AspNetOnLambda/src/AspNetOnLambda
+        - name: Publish
+          run: dotnet publish -o publish ./aws-projects-dotnet/lambdas/AspNetOnLambda/src/AspNetOnLambda
         - uses: aws-actions/configure-aws-credentials@v2
           with:
             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws-region: us-east-1
-        - run: zip -j lambda3.zip ./aws-projects-dotnet/lambdas/AspNetOnLambda/src/AspNetOnLambda/*
+        - run: zip -j lambda3.zip ./publish/*
         - run: aws lambda update-function-code --function-name=lambda3 --zip-file=fileb://lambda3.zip
