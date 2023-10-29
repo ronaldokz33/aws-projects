@@ -3,6 +3,7 @@ using Amazon.Lambda.Core;
 using Newtonsoft.Json;
 using System.Net;
 
+[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 namespace AspNetOnLambda;
 
 /// <summary>
