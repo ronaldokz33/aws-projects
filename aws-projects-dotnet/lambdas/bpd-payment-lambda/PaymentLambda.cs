@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.Net;
 
-namespace aws_projects_dotnet
+namespace bpd_payment_lambda
 {
     internal class PaymentLambda
     {

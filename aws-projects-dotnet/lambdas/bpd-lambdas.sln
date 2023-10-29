@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aws-projects-dotnet", "aws-projects-dotnet\aws-projects-dotnet.csproj", "{073848D5-5F05-4690-A1F4-EA149D45B3F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bpd-payment-lambda", "bpd-payment-lambda\bpd-payment-lambda.csproj", "{073848D5-5F05-4690-A1F4-EA149D45B3F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
