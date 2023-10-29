@@ -36,5 +36,5 @@ jobs:
             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws-region: us-east-1
-        - run: zip -j lambda3.zip ./aws-projects-dotnet/lambdas/Bpd.Order.Processing.Lambda/*
+        - run: zip -j lambda3.zip ./aws-projects-dotnet/lambdas/AspNetOnLambda/src/AspNetOnLambda/*
         - run: aws lambda update-function-code --function-name=lambda3 --zip-file=fileb://lambda3.zip
