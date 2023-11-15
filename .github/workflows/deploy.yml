@@ -1,0 +1,45 @@
+name: 'Deploy Lambdas'
+
+on: [push]
+
+jobs:
+    lambda1:
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: ./aws-projects-dotnet/lambdas/Bpd.Order.Processing.Lambda
+      steps:
+        - uses: actions/checkout@v3
+        - name: Setup .NET 6.x
+          uses: actions/setup-dotnet@v3
+          with:
+            dotnet-version: '6.x'
+        - name: AWS CLI
+          run: dotnet tool install -g Amazon.Lambda.Tools
+        - name: Publish
+          run: dotnet lambda package
+        - uses: aws-actions/configure-aws-credentials@v2
+          with:
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-region: us-east-1
+        - run: aws lambda update-function-code --function-name=lambda-terraform --zip-file=fileb://bin/Release/net6.0/Bpd.Order.Processing.Lambda.zip
+        # - name: Setup .NET 6.x
+        #   uses: actions/setup-dotnet@v3
+        #   with:
+        #     dotnet-version: '6.x'
+        # - name: AWS CLI
+        #   run: dotnet tool install -g Amazon.Lambda.Tools
+        # - name: Install dependencies
+        #   run: dotnet restore ./aws-projects-dotnet/lambdas/AspNetOnLambda/src/AspNetOnLambda
+        # - name: Build
+        #   run: dotnet build --no-restore ./aws-projects-dotnet/lambdas/AspNetOnLambda/src/AspNetOnLambda
+        # - name: Publish
+        #   run: dotnet lambda package
+        #   working-directory: ./aws-projects-dotnet/lambdas/AspNetOnLambda/src/AspNetOnLambda
+        # - uses: aws-actions/configure-aws-credentials@v2
+        #   with:
+        #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        #     aws-region: us-east-1
+        # - run: aws lambda update-function-code --function-name=lambda3 --zip-file=fileb://aws-projects-dotnet/lambdas/AspNetOnLambda/src/AspNetOnLambda/bin/Release/net6.0/AspNetOnLambda.zip

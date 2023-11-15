@@ -1,10 +1,12 @@
 ﻿using Amazon.Lambda.APIGatewayEvents;
+using Amazon.Lambda.Core;
 using Newtonsoft.Json;
 using System.Net;
 
-namespace aws_projects_dotnet
+[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
+namespace Bpd.Order.Processing.Lambda
 {
-    internal class PaymentLambda
+    public sealed class Function
     {
         public APIGatewayProxyResponse Handler(APIGatewayProxyRequest request)
         {
@@ -15,8 +17,9 @@ namespace aws_projects_dotnet
                 StatusCode = (int)HttpStatusCode.OK,
                 Body = JsonConvert.SerializeObject(new
                 {
-                    Ronaldo = "Hello World",
-                    Id = id
+                    Ronaldo = "Hello World from terraform",
+                    Id = id,
+                    Project = "Bpd.Order.Processing.Lambda"
                 })
             };
         }

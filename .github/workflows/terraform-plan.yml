@@ -1,15 +1,11 @@
 name: 'Terraform Plan'
 
-on:
-  pull_request:
-    branches: 
-      - main
-    types: [closed]
+on: [push, pull_request]
 
 env:
   TF_CLOUD_ORGANIZATION: "RonaldoLemos"
   TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
-  TF_WORKSPACE: "learn-terraform-github-actions"
+  TF_WORKSPACE: "aws-projects"
   CONFIG_DIRECTORY: "./"
 
 jobs:

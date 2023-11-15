@@ -5,7 +5,7 @@ locals {
   function_runtime            = "dotnet6"
   function_timeout_in_seconds = 5
 
-  function_source_dir = "${path.module}/aws-projects-dotnet/aws-projects-dotnet/${local.function_name}"
+  function_source_dir = "${path.module}/bpd-payment-lambda/bpd-payment-lambda/${local.function_name}"
 }
 
 resource "aws_lambda_function" "function" {
