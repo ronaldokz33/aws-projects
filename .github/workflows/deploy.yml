@@ -23,7 +23,7 @@ jobs:
             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws-region: us-east-1
-        - run: aws lambda update-function-code --function-name=lambda1 --zip-file=fileb://bin/Release/net6.0/Bpd.Order.Processing.Lambda.zip
+        - run: aws lambda update-function-code --function-name=lambda-terraform --zip-file=fileb://bin/Release/net6.0/Bpd.Order.Processing.Lambda.zip
         # - name: Setup .NET 6.x
         #   uses: actions/setup-dotnet@v3
         #   with:

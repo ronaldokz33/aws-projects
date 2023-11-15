@@ -17,7 +17,7 @@ namespace Bpd.Order.Processing.Lambda
                 StatusCode = (int)HttpStatusCode.OK,
                 Body = JsonConvert.SerializeObject(new
                 {
-                    Ronaldo = "Hello World",
+                    Ronaldo = "Hello World from terraform",
                     Id = id,
                     Project = "Bpd.Order.Processing.Lambda"
                 })
